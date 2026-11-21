@@ -12,11 +12,16 @@ language with Java's shape and native output.
 The skill is a single directory with a `SKILL.md`. Any agent that loads a skill
 from a directory can use it.
 
-OMP:
+OMP: link or copy the skill into a directory OMP reads. The repository already
+has `.omp/skills/teyru` pointing at `skills/teyru`, so running `omp` from this
+repository loads it. For every project:
 
 ```sh
-omp skill install ./skills/teyru -g     # after cloning this repository
+mkdir -p ~/.omp/agent/skills
+ln -s "$PWD/skills/teyru" ~/.omp/agent/skills/teyru
 ```
+
+Or set `skills.customDirectories` to the `skills/` directory.
 
 Claude Code:
 
