@@ -250,12 +250,11 @@ Code from other languages: `let` is `TY-TYP-0003: cannot find type let`, `===` a
 
 Where it differs from the JDK, verified:
 
-- Regex matches UTF-16 **code units**: `"😀a".matches(".a")` is false here and true on the JDK.
-- Reflection reads annotation elements **by name** (`ann.stringValue("value")`), not `ann.value()`. Arrays share one runtime class (`teyru.Array`).
+- Reflection reads annotation elements **by name** (`ann.stringValue("value")`), not `ann.value()`.
 - `HashMap` iteration order matches JDK 21 below 64 buckets; bucket treeification is not implemented.
 - `String.length()` is code units, storage is WTF-8, so `"中文".length()` is 2 and `getBytes().length` is 6.
-- Threads cover `Thread`, `synchronized`, `wait`/`notify`, interrupts, daemon threads, `ThreadLocal` and virtual threads. Missing: priorities, `ThreadGroup`, `join(long)`, `Thread.State`.
-- Missing APIs are named refusals or compile errors, never silent: `String.format` `%t` is the runtime stop above; `MessageDigest` has no SHA-3.
+- Threads cover `Thread`, `synchronized`, `wait`/`notify`, interrupts, daemon threads, `ThreadLocal` and virtual threads. Missing, as named methods: priorities, `ThreadGroup`, `join(long)`, `Thread.State`.
+- Missing APIs fail loudly, never silently: `String.format` `%t` is the runtime stop above; `MessageDigest.getInstance("SHA3-256")` throws `NoSuchAlgorithmException`.
 
 The library source is `lib/*.teyru` in the compiler repository; `teyru emit-java` is the faster oracle for a single construct.
 
