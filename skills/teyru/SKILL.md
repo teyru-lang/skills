@@ -236,7 +236,7 @@ class Main {
 }
 ```
 
-Arrays print their identity, not their contents: `System.out.println(cs)` for `char[]` prints `char[]@...`, and `"" + cs` does the same (Java prints the characters). Use `String.valueOf(cs)` for `char[]` and `Arrays.toString(xs)` for the rest.
+Arrays print their identity, not their contents. `System.out.println(cs)` on a `char[]` prints `char[]@...` (Java's `println(char[])` prints the characters instead), and concatenation prints the identity in both languages, spelled `char[]@...` here and `[C@...` on the JDK. Use `String.valueOf(cs)` for `char[]` and `Arrays.toString(xs)` for the rest.
 
 `String.format` implements `%s %d %f %x %c %n %%` and numeric flags such as `%05.2f`. `%t` is not implemented: it compiles and then stops with `teyru: no implementation for String.format: %t is not implemented`, exit 70.
 
