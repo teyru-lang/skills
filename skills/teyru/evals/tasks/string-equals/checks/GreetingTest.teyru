@@ -1,0 +1,21 @@
+import teyru.test.*
+
+class GreetingTest {
+  @Test
+  public void literalsMatch() {
+    Assert.assertTrue(Greeting.same("hi", "hi"))
+  }
+
+  @Test
+  public void builtStringsMatch() {
+    var a = new StringBuilder()
+    a.append("h").append("i")
+    Assert.assertTrue(Greeting.same(a.toString(), "hi"))
+    Assert.assertTrue(Greeting.same("hi", a.toString()))
+  }
+
+  @Test
+  public void differentStringsDiffer() {
+    Assert.assertFalse(Greeting.same("hi", "ho"))
+  }
+}

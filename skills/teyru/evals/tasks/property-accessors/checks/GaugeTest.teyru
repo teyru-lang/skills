@@ -1,0 +1,24 @@
+import teyru.test.*
+
+class GaugeTest {
+  @Test
+  public void clampsLow() {
+    var g = new Gauge()
+    g.level = -5
+    Assert.assertEquals(0, g.level)
+  }
+
+  @Test
+  public void clampsHigh() {
+    var g = new Gauge()
+    g.level = 150
+    Assert.assertEquals(100, g.level)
+  }
+
+  @Test
+  public void keepsInside() {
+    var g = new Gauge()
+    g.level = 42
+    Assert.assertEquals(42, g.level)
+  }
+}

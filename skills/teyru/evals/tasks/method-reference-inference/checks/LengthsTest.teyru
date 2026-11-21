@@ -1,0 +1,12 @@
+import teyru.test.*
+
+class LengthsTest {
+  @Test
+  public void mapsEachWord() {
+    var out = Lengths.of(List.of("ab", "c", ""))
+    Assert.assertEquals(3, out.size())
+    Assert.assertEquals(2, out.get(0))
+    Assert.assertEquals(1, out.get(1))
+    Assert.assertEquals(0, out.get(2))
+  }
+}

@@ -1,0 +1,11 @@
+import java.util.*
+
+class Sum {
+  public static int of(List xs) {
+    int total = 0
+    for (var x : xs) {
+      total = total + x
+    }
+    return total
+  }
+}

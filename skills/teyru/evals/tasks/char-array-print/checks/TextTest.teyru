@@ -1,0 +1,14 @@
+import teyru.test.*
+
+class TextTest {
+  @Test
+  public void joinsCharacters() {
+    char[] cs = new char[]{97, 98, 99}
+    Assert.assertEquals("abc", Text.of(cs))
+  }
+
+  @Test
+  public void handlesEmpty() {
+    Assert.assertEquals("", Text.of(new char[0]))
+  }
+}

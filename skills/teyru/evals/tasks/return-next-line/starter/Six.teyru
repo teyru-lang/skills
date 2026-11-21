@@ -1,0 +1,6 @@
+class Six {
+  public static int value() {
+    return
+      6
+  }
+}

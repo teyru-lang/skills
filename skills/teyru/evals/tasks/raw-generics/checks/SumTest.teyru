@@ -1,0 +1,13 @@
+import teyru.test.*
+
+class SumTest {
+  @Test
+  public void emptyIsZero() {
+    Assert.assertEquals(0, Sum.of(List.of()))
+  }
+
+  @Test
+  public void addsEveryElement() {
+    Assert.assertEquals(6, Sum.of(List.of(1, 2, 3)))
+  }
+}

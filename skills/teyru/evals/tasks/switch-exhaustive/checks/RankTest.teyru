@@ -1,0 +1,13 @@
+import teyru.test.*
+
+class RankTest {
+  @Test
+  public void lowIsOne() {
+    Assert.assertEquals(1, Rank.of(Level.LOW))
+  }
+
+  @Test
+  public void highIsTen() {
+    Assert.assertEquals(10, Rank.of(Level.HIGH))
+  }
+}

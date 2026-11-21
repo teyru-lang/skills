@@ -1,0 +1,10 @@
+class Gauge {
+  public int level {
+    get {
+      return level
+    }
+    set {
+      level = value
+    }
+  }
+}

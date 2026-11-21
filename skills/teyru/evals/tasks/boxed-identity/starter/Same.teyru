@@ -1,0 +1,5 @@
+class Same {
+  public static boolean of(Integer a, Integer b) {
+    return a == b
+  }
+}

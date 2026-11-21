@@ -1,0 +1,18 @@
+import teyru.test.*
+
+class SameTest {
+  @Test
+  public void twentyIsEqual() {
+    Assert.assertTrue(Same.of(20, 20))
+  }
+
+  @Test
+  public void bigValuesAreNotIdentical() {
+    Assert.assertTrue(Same.of(1000, 1000))
+  }
+
+  @Test
+  public void differentValuesDiffer() {
+    Assert.assertFalse(Same.of(3, 4))
+  }
+}

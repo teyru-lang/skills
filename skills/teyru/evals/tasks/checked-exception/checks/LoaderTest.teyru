@@ -1,0 +1,25 @@
+import teyru.test.*
+
+class LoaderTest {
+  @Test
+  public void reads() {
+    boolean threw = false
+    try {
+      Loader.read(false)
+    } catch (IOException e) {
+      threw = true
+    }
+    Assert.assertFalse(threw)
+  }
+
+  @Test
+  public void propagates() {
+    boolean threw = false
+    try {
+      Loader.read(true)
+    } catch (IOException e) {
+      threw = "missing".equals(e.getMessage())
+    }
+    Assert.assertTrue(threw)
+  }
+}

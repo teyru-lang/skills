@@ -1,0 +1,16 @@
+import teyru.test.*
+
+class CartTest {
+  @Test
+  public void startsWithOneItem() {
+    Assert.assertEquals(1, new Cart().size())
+  }
+
+  @Test
+  public void addAppends() {
+    var cart = new Cart()
+    cart.add("pear")
+    Assert.assertEquals(2, cart.size())
+    Assert.assertEquals("pear", cart.items().get(1))
+  }
+}

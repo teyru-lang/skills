@@ -1,0 +1,7 @@
+import java.util.stream.*
+
+class Lengths {
+  public static List<Integer> of(List<String> words) {
+    return words.stream().map(String::length).collect(Collectors.toList())
+  }
+}

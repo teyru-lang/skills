@@ -1,0 +1,10 @@
+import java.io.*
+
+class Loader {
+  public static String read(boolean broken) {
+    if (broken) {
+      throw new IOException("missing")
+    }
+    return "data"
+  }
+}

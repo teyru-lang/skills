@@ -1,0 +1,14 @@
+{
+  "name": "teyru",
+  "owner": { "name": "teyru-lang" },
+  "metadata": { "description": "Agent skills for the Teyru language." },
+  "plugins": [
+    {
+      "name": "teyru",
+      "source": "./",
+      "version": "0.1.0",
+      "description": "Write, build, run and debug Teyru code with the teyru compiler.",
+      "author": { "name": "teyru-lang" }
+    }
+  ]
+}

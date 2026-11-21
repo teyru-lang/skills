@@ -1,0 +1,8 @@
+import teyru.test.*
+
+class SixTest {
+  @Test
+  public void isSix() {
+    Assert.assertEquals(6, Six.value())
+  }
+}

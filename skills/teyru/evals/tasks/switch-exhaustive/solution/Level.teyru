@@ -1,0 +1,13 @@
+enum Level {
+  LOW, HIGH
+}
+
+class Rank {
+  public static int of(Level level) {
+    int n = switch (level) {
+      case LOW -> 1
+      case HIGH -> 10
+    }
+    return n
+  }
+}

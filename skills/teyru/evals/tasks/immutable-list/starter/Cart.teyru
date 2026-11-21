@@ -1,0 +1,17 @@
+import java.util.*
+
+class Cart {
+  private final List<String> items = List.of("apple")
+
+  public void add(String item) {
+    items.add(item)
+  }
+
+  public List<String> items() {
+    return items
+  }
+
+  public int size() {
+    return items.size()
+  }
+}
