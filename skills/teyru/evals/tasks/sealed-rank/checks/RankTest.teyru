@@ -1,0 +1,13 @@
+import teyru.test.*
+
+class RankTest {
+  @Test
+  public void circleIsRound() {
+    Assert.assertEquals("round", Rank.of(new Circle(1.0)))
+  }
+
+  @Test
+  public void squareIsFlat() {
+    Assert.assertEquals("flat", Rank.of(new Square(2.0)))
+  }
+}

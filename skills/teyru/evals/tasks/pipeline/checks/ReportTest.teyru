@@ -1,0 +1,16 @@
+import teyru.test.*
+
+class ReportTest {
+  @Test
+  public void upperCases() {
+    var out = Report.labels(List.of("ab", "c"))
+    Assert.assertEquals(2, out.size())
+    Assert.assertEquals("AB", out.get(0))
+    Assert.assertEquals("C", out.get(1))
+  }
+
+  @Test
+  public void emptyStaysEmpty() {
+    Assert.assertEquals(0, Report.labels(List.of()).size())
+  }
+}

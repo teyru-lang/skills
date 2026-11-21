@@ -46,7 +46,7 @@ teyru version
 
 - `check-examples.py` builds every `teyru` fence in `SKILL.md`; a fence tagged
   `teyru error TY-...` must fail with that code. No model call.
-- `tasks/` holds ten small Teyru packages. Each has a `starter/` that fails, a
+- `tasks/` holds twelve small Teyru packages. Each has a `starter/` that fails, a
   `solution/` that passes, a `checks/` test file, and a `PROMPT.md`.
 - `verify-tasks.sh` proves every starter fails and every solution passes.
 - `grade.sh` copies the checks into a work directory and runs `teyru test`.
