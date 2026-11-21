@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+      - name: install teyru
+        run: |
+          go install github.com/teyru-lang/Teyru/cmd/teyru@latest
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: compiler answers
+        run: teyru version
+      - name: the skill's examples build
+        run: python3 skills/teyru/evals/check-examples.py "$(command -v teyru)" skills/teyru/SKILL.md
+      - name: every starter fails and every solution passes
+        run: sh skills/teyru/evals/verify-tasks.sh "$(command -v teyru)"
