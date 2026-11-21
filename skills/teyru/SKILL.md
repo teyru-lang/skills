@@ -273,7 +273,11 @@ class CalculatorTest {
 }
 ```
 
-`@BeforeEach`, `@AfterEach`, `@BeforeAll`, `@AfterAll` follow JUnit's shape. `Assert` has `assertEquals` for `Object`/`int`/`long`/`char`/`boolean`/`double`, `assertTrue`, `assertFalse`, `assertNull`, `assertNotNull`, `assertThrows(Class, Runnable)` and `fail(String)`.
+`@BeforeEach`, `@AfterEach`, `@BeforeAll`, `@AfterAll` follow JUnit's shape.
+
+`Assert` has, each with a message overload: `assertEquals` for `Object`/`int`/`long`/`char`/`boolean`/`double`/`float`, `assertEquals(double, double, delta)`, `assertNotEquals`, `assertTrue`, `assertFalse`, `assertNull`, `assertNotNull`, `assertSame`/`assertNotSame`, `assertArrayEquals` (one per element type), `assertThrows(Class, Runnable)` (returns the throwable), `assertDoesNotThrow`, `assertAll`, and `fail`.
+
+The command's flags: `-run REGEXP` (over `Class.method` or the method name), `-tag NAME` (with `@Tag`), `-timeout DURATION` (per test, default 60s; the FAIL line names the hung test), `-deadline DURATION` (per directory, default 10m), `-v`, `-no-tests-ok`. Each test's stdout is captured and printed only on failure. No tests found is exit 2. `@Disabled("reason")` skips. Writing rules (one behaviour per method, expected first, arrays via `assertArrayEquals`, no `Thread.sleep` as synchronisation) are the testing page of the docs.
 
 ## More
 

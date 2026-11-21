@@ -14,4 +14,7 @@ teyru=$1
 task=$2
 work=$3
 cp "$task"/checks/* "$work"/
-"$teyru" test "$work"
+# The grade is a test run, so it is wrapped in the same budget a CI step uses: a
+# check that hangs must fail the grade instead of hanging it. -timeout is per
+# test, -deadline for the package.
+"$teyru" test -timeout 60s -deadline 5m "$work"
