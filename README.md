@@ -26,7 +26,7 @@ Or set `skills.customDirectories` to the `skills/` directory.
 Claude Code:
 
 ```
-/plugin marketplace add teyru-lang/Teyru-skills
+/plugin marketplace add teyru-lang/skills
 /plugin install teyru@teyru
 ```
 
