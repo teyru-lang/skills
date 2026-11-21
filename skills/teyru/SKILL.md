@@ -255,6 +255,9 @@ Where it differs from the JDK, verified:
 - `String.length()` is code units, storage is WTF-8, so `"中文".length()` is 2 and `getBytes().length` is 6.
 - Threads cover `Thread`, `synchronized`, `wait`/`notify`, interrupts, daemon threads, `ThreadLocal` and virtual threads. Missing, as named methods: priorities, `ThreadGroup`, `join(long)`, `Thread.State`.
 - Missing APIs fail loudly, never silently: `String.format` `%t` is the runtime stop above; `MessageDigest.getInstance("SHA3-256")` throws `NoSuchAlgorithmException`.
+- Crypto is in the standard library: `MessageDigest`, `SecureRandom` (system CSPRNG), `Mac` (HMAC), `Cipher` (AES ECB/CBC/CTR/GCM, RSA PKCS#1 v1.5), `Signature` (RSA verification only -- there is no signer), `KeyFactory` (X.509/PKCS#8 DER). No OpenSSL is linked for any of it.
+- `java.nio` is present as heap `ByteBuffer`, non-blocking `SocketChannel`/`ServerSocketChannel`/`DatagramChannel` and a `Selector` over one poll. A non-blocking read answers 0 when there is nothing, never -1.
+- `ProcessBuilder`/`Process` start children over pipes. There is no shell: write `sh -c` yourself.
 
 The library source is `lib/*.teyru` in the compiler repository; `teyru emit-java` is the faster oracle for a single construct.
 
