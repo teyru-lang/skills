@@ -246,7 +246,7 @@ Code from other languages: `let` is `TY-TYP-0003: cannot find type let`, `===` a
 
 ## Standard library
 
-`java.lang`, `java.util`, `java.util.stream`, `java.util.regex`, `java.util.function`, `java.time`, `java.io`, `java.math`, `java.security` (MessageDigest), Gson (`com.google.gson.*`), `teyru.test`, plus a web server, HTTP client, WebSocket, JSON binding, validation, reflection and threads. The `java.*` prefixes are global: `List`, `Map`, `Optional`, `ArrayList`, `Arrays`, `Collections`, `Pattern` need no import. An `import` that names a package the library does not answer is `TY-TYP-0115`, not a warning.
+`java.lang`, `java.util`, `java.util.stream`, `java.util.regex`, `java.util.function`, `java.time`, `java.io`, `java.math`, `java.text`, `java.net`, `java.lang.reflect`, Gson (`com.google.gson.*`), `teyru.test`, plus MessageDigest, a web server, HTTP client, WebSocket, JSON binding, validation and threads. The `java.*` prefixes are global: `List`, `Map`, `Optional`, `ArrayList`, `Arrays`, `Collections`, `Pattern` need no import. An `import` that names a package the library does not answer is `TY-TYP-0115`, not a warning.
 
 Where it differs from the JDK, verified:
 
