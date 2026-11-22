@@ -17,4 +17,8 @@ cp "$task"/checks/* "$work"/
 # The grade is a test run, so it is wrapped in the same budget a CI step uses: a
 # check that hangs must fail the grade instead of hanging it. -timeout is per
 # test, -deadline for the package.
+#
+# A compiler older than the runner contract parses "-timeout" as a path; the
+# caller probes for that once ($TEYRU_HAS_RUNNER_FLAGS) rather than each task
+# reporting a broken solution for a compiler that is merely old.
 "$teyru" test -timeout 60s -deadline 5m "$work"

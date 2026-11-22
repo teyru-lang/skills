@@ -9,6 +9,14 @@ if [ "$#" -ne 1 ]; then
   exit 2
 fi
 teyru=$1
+# The grade uses the runner contract's -timeout/-deadline. A compiler older than
+# that parses the flag as a path and fails every task with "stat -timeout",
+# which reads like twelve broken solutions; one probe names the real problem.
+probe=$("$teyru" test -timeout 1s -deadline 1s /nonexistent-eval-probe 2>&1)
+if printf '%s' "$probe" | grep -q "stat -timeout"; then
+  echo "FAIL: this teyru does not know -timeout ($("$teyru" version 2>/dev/null)); the eval needs the runner contract from main" >&2
+  exit 1
+fi
 here=$(cd "$(dirname "$0")" && pwd)
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT

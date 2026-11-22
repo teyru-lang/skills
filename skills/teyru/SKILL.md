@@ -258,6 +258,9 @@ Where it differs from the JDK, verified:
 - Crypto is in the standard library: `MessageDigest`, `SecureRandom` (system CSPRNG), `Mac` (HMAC), `Cipher` (AES ECB/CBC/CTR/GCM, RSA PKCS#1 v1.5), `Signature` (RSA verification only -- there is no signer), `KeyFactory` (X.509/PKCS#8 DER). No OpenSSL is linked for any of it.
 - `java.nio` is present as heap `ByteBuffer`, non-blocking `SocketChannel`/`ServerSocketChannel`/`DatagramChannel` and a `Selector` over one poll. A non-blocking read answers 0 when there is nothing, never -1.
 - `ProcessBuilder`/`Process` start children over pipes. There is no shell: write `sh -c` yourself.
+- Data formats are in the library, each refusing what it does not implement: `CsvReader`/`CsvWriter` (RFC 4180), `TomlDocument.parse` (TOML 1.0), `XmlDocument.parse` (XML 1.0, and a `DOCTYPE` is refused by name because an internal DTD can redefine entities -- the XXE hole), `YamlDocument.parse` (YAML 1.2 block/flow; anchors, aliases and tags refused by name).
+- `Locale` carries real number, currency, date patterns and names for the locales in its table (read out of OpenJDK 21), and `String.toUpperCase(Locale)` has the Turkish/Azerbaijani/Lithuanian rules. A locale not in the table answers ROOT, which is visible rather than wrong-looking.
+- The regex engine now has the full Java surface for the common constructs: lookahead/lookbehind, backreferences, named groups, possessive quantifiers, atomic groups, inline flags and `\p{...}`. Still refused by name: `\G`, `\R`, `\X`, POSIX `[[:alpha:]]`, octal `\0`.
 
 The library source is `lib/*.teyru` in the compiler repository; `teyru emit-java` is the faster oracle for a single construct.
 

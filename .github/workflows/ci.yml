@@ -13,13 +13,19 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: '1.26'
-      - name: install teyru
+      # The skill documents the tree under development, not the last tag: the
+      # eval tasks grade with `teyru test -timeout`, which a released compiler
+      # older than the runner contract does not know. Installing @latest made
+      # every task fail for that reason instead of for the solution's, so the
+      # install names main and the check below says so out loud.
+      - name: install teyru from main
         run: |
-          go install github.com/teyru-lang/Teyru/cmd/teyru@latest
+          go install github.com/teyru-lang/Teyru/cmd/teyru@main
           echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
       - name: compiler answers
         run: teyru version
       - name: the skill's examples build
         run: python3 skills/teyru/evals/check-examples.py "$(command -v teyru)" skills/teyru/SKILL.md
       - name: every starter fails and every solution passes
+        timeout-minutes: 30
         run: sh skills/teyru/evals/verify-tasks.sh "$(command -v teyru)"
